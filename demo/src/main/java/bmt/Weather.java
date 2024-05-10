@@ -1,5 +1,7 @@
 package bmt;
 
+import org.json.JSONObject;
+
 public class Weather {
     String name;
     int temperature;
@@ -9,14 +11,14 @@ public class Weather {
     String windSpeed;
     String startTime;
     String endTime;
-    String isDaytime;
+    Boolean isDaytime;
     String shortForecastText;
     String longForecastText;
     String icon;
-    String precipitation;
+    JSONObject precipitation;
 
     public Weather(String name, int temperature, int humidity, int dewpointVal, String windDirection, String windSpeed, String startTime, String endTime, 
-                String isDaytime, String shortForecastText, String longForecastText, String icon, String precipitation) {
+                Boolean isDaytime, String shortForecastText, String longForecastText, String icon, JSONObject precipitation) {
         this.name = name;
         this.temperature = temperature;
         this.humidity = humidity;
