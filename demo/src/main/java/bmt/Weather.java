@@ -32,5 +32,6 @@ public class Weather {
         this.longForecastText = longForecastText;
         this.icon = icon;
         this.precipitation = precipitation;
-    }  
+    }
+
 }

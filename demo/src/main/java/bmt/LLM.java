@@ -1,17 +1,50 @@
 package bmt;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import org.json.JSONObject;
+
 
 public class LLM {
 
-    private static final String API_KEY = "sk-weather-prediction-EPVMgrfhVxOquFLVelL2T3BlbkFJxI0UnmgO7rs1OGQsqyZw";
+    private static final String API_KEY = "sk-proj-PtexfSC654frYchSC284T3BlbkFJUDFhGngzUk1WwU6X6mEa";
     private static final String ENDPOINT = "https://api.openai.com/v1/completions";
-
-
-    // public static JSONObject main(String[] args) {
+    private static final String model = "gpt-3.5-turbo-instruct";
     
-    // JSONObject output;
-    // return output;
+    public static void chatGPT(String text) throws Exception {
+        String url = "https://api.openai.com/v1/completions";
+        HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
 
-    // }
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setRequestProperty("Authorization", "Bearer " + API_KEY);
 
+        JSONObject data = new JSONObject();
+        data.put("model", model);
+        data.put("prompt", text);
+        data.put("max_tokens", 4000);
+        data.put("temperature", 1.0);
+
+        con.setDoOutput(true);
+        con.getOutputStream().write(data.toString().getBytes());
+
+        String output = new BufferedReader(new InputStreamReader(con.getInputStream())).lines()
+                .reduce((a, b) -> a + b).get();
+
+        System.out.println(new JSONObject(output).getJSONArray("choices").getJSONObject(0).getString("text"));
+    }
+
+    public static String promptBuilder(String base, String info) {
+        String prompt = base + info;
+        return prompt;
+
+    }
+
+    public static void main(String[] args) throws Exception {
+        String prompt = promptBuilder(model, model);
+        chatGPT("Hello, how are you?");
+    }
 
 }
