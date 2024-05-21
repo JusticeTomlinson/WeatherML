@@ -9,6 +9,7 @@ public class ForecastFactory {
     String country;
     String state;
     String city;
+    Forecast forecast;
 
     public ForecastFactory(String country, String state, String city){
         this.country = country;
@@ -21,11 +22,11 @@ public class ForecastFactory {
     Float[] longlat = Location.getLongLat(country, state, city); // Spaces need to be replaced with question mark
     String historicalJSON_URL = RequestHandler.getForecastURL(longlat[0], longlat[1]);
     JSONObject historicalJSON = RequestHandler.getForecastSeries(historicalJSON_URL);
-    Forecast forecasts = createForecastObject(historicalJSON);
+    forecast = createForecastObject(historicalJSON, this.country, this.state, this.city);
     int x = 0;
     }
 
-    public static Forecast createForecastObject(JSONObject forecastJSON) {
+    public static Forecast createForecastObject(JSONObject forecastJSON, String country, String state, String city) {
         JSONArray periods = forecastJSON.getJSONArray("periods");
         ArrayList<Weather> weatherList = new ArrayList<>();
 
@@ -54,7 +55,7 @@ public class ForecastFactory {
             weatherList.add(weatherObject);
         }
 
-        Forecast forecastObject = new Forecast(weatherList);
+        Forecast forecastObject = new Forecast(country, state, city, weatherList);
 
         return forecastObject;
     }

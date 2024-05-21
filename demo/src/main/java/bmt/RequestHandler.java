@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 public class RequestHandler {
     private static final HttpClient client = HttpClient.newHttpClient();
-    private static final String OPENAI_API_KEY = "YOUR_OPENAI_API_KEY";
+    private static final String OPENAI_API_KEY = "sk-proj-PtexfSC654frYchSC284T3BlbkFJUDFhGngzUk1WwU6X6mEa";
     private static final String OPENAI_ENDPOINT = "https://api.openai.com/v1/completions";
 
 
