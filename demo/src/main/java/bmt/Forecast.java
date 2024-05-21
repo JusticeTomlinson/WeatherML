@@ -51,8 +51,8 @@ public class Forecast {
         // sb.append("End Time ").append(chosenWeather.endTime).append(" ");
         sb.append("Is Daytime ").append(chosenWeather.isDaytime ? "Yes" : "No").append(" ");
         sb.append("Short Forecast ").append(chosenWeather.shortForecastText).append(" ");
-        sb.append("Long Forecast ").append(chosenWeather.longForecastText).append(" ");
-        sb.append("Precipitation: ").append(chosenWeather.precipitation.toString(2)).append("\n"); // Pretty print the JSON object with indentation
+        // sb.append("Long Forecast ").append(chosenWeather.longForecastText).append(" ");
+        // sb.append("Precipitation: ").append(chosenWeather.precipitation.toString(2)).append("\n"); // Pretty print the JSON object with indentation
         return sb.toString();
     }
 

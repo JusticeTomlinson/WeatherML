@@ -6,20 +6,21 @@ import java.net.URL;
 
 import org.json.JSONObject;
 
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class LLM {
 
-    private static final String API_KEY = "sk-proj-PtexfSC654frYchSC284T3BlbkFJUDFhGngzUk1WwU6X6mEa";
+    private static final Dotenv dotenv = Dotenv.load();
+    public static final String FUN_API_KEY = dotenv.get("FUN_API_KEY");    
     private static final String ENDPOINT = "https://api.openai.com/v1/completions";
     private static final String model = "gpt-3.5-turbo-instruct";
     
     public static void chatGPT(String text) throws Exception {
         String url = "https://api.openai.com/v1/completions";
         HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
-
         con.setRequestMethod("POST");
         con.setRequestProperty("Content-Type", "application/json");
-        con.setRequestProperty("Authorization", "Bearer " + API_KEY);
+        con.setRequestProperty("Authorization", "Bearer " + FUN_API_KEY);
 
         JSONObject data = new JSONObject();
         data.put("model", model);

@@ -8,10 +8,14 @@ import java.net.http.HttpResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
+
 public class RequestHandler {
     private static final HttpClient client = HttpClient.newHttpClient();
-    private static final String OPENAI_API_KEY = "sk-proj-PtexfSC654frYchSC284T3BlbkFJUDFhGngzUk1WwU6X6mEa";
-    private static final String OPENAI_ENDPOINT = "https://api.openai.com/v1/completions";
+    private static final Dotenv dotenv = Dotenv.load();
+    public static final String FUN_API_KEY = dotenv.get("FUN_API_KEY");    
+    private static final String ENDPOINT = "https://api.openai.com/v1/completions";    
 
 
     public static JSONObject sendRequest(String URIBuilder, String method, JSONObject payload, String... headers) throws IOException, InterruptedException {
@@ -80,11 +84,11 @@ public class RequestHandler {
             .put("max_tokens", maxTokens);
 
         return sendRequest(
-            OPENAI_ENDPOINT,
+            ENDPOINT,
             "POST",
             payload,
             "Content-Type", "application/json",
-            "Authorization", "Bearer " + OPENAI_API_KEY
+            "Authorization", "Bearer " + FUN_API_KEY
         );
 }
 }
