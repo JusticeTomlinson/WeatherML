@@ -62,7 +62,7 @@ public class ForecastTest {
                                 "Short Forecast: Clear sky\n" +
                                 "Long Forecast: Clear throughout the day\n" +
                                 "Icon: null\n" +
-                                "Precipitation: \n";  // Adjust based on actual output formatting
+                                "Precipitation: \n"; 
 
         assertEquals(expectedOutput, outContent.toString());
     }

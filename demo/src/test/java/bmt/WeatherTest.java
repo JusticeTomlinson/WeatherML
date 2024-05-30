@@ -5,11 +5,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
-/**
- *
- * @author justi
- * Tests that the constructor works.
- */
 public class WeatherTest {
     
 @Test
