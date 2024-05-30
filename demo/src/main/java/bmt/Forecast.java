@@ -16,7 +16,6 @@ public class Forecast {
         this.weeklyWeather = weeklyWeather;
     }
 
-     // Method to display weather information
     public void displayWeather() {
         Weather chosenWeather = this.weeklyWeather.get(0);
         System.out.println("Region: " + this.city + ", " + this.state + ", " + this.country);
