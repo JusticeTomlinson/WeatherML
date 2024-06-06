@@ -1,7 +1,8 @@
-bmt\ForecastFactory.class
-bmt\RequestHandler.class
-bmt\LLM.class
-bmt\Forecast.class
-bmt\Weather.class
-bmt\App.class
-bmt\Location.class
+bmt/Forecast.class
+bmt/LLM.class
+bmt/App.class
+bmt/ForecastFactory.class
+bmt/ChatController.class
+bmt/Location.class
+bmt/Weather.class
+bmt/RequestHandler.class

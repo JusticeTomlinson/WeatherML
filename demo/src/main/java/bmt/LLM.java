@@ -15,7 +15,7 @@ public class LLM {
     private static final String ENDPOINT = "https://api.openai.com/v1/completions";
     private static final String model = "gpt-3.5-turbo-instruct";
     
-    public static void chatGPT(String text) throws Exception {
+    public static String chatGPT(String text) throws Exception {
         String url = "https://api.openai.com/v1/completions";
         HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
         con.setRequestMethod("POST");
@@ -34,7 +34,9 @@ public class LLM {
         String output = new BufferedReader(new InputStreamReader(con.getInputStream())).lines()
                 .reduce((a, b) -> a + b).get();
 
-        System.out.println(new JSONObject(output).getJSONArray("choices").getJSONObject(0).getString("text"));
+        String result = new JSONObject(output).getJSONArray("choices").getJSONObject(0).getString("text");
+        System.out.println(result);
+        return result;
     }
 
     public static String promptBuilder(String base, String info) {
